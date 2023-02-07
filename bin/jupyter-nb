@@ -1,0 +1,4 @@
+#!/bin/bash
+# add this  -u $(id -u):$(id -g)
+# --privileged is needed so we can endit the read only bit of the file system to disable tensorflow crying about numa nodes
+docker run --privileged --gpus all -p 8888:8888 -it --rm -v /home/joshpattman/Documents/Uni/3_1_PROJ/thirdyear-proj/comp3200-cw:/tf/comp3200 -v /home/joshpattman/Documents/Uni/3_1_ML/comp3222-cw:/tf/comp3222 -v /home/joshpattman/Documents/Coding/python-jupyter:/tf/python-jupyter --name jupyter-nb pretty-gpu-jupyter
