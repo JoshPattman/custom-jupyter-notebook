@@ -41,6 +41,7 @@ mkdir ./bin
 cp ./bin-src/jupyter-nb ./bin/jupyter-nb
 cp ./bin-src/jupyter-nb-sh ./bin/jupyter-nb-sh
 cp ./bin-src/mounts.txt ./bin/mounts.txt
+cp ./bin-src/password.txt ./bin/password.txt
 
 # Remove gpu flag if not using gpu
 if [ $USE_GPU = false ]; then

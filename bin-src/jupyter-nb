@@ -19,7 +19,10 @@ done
 # join the array elements with a newline character and assign to a variable
 mounts=$(printf "%s " "${file_path_array[@]}")
 
+# Read password
+pass=$(cat ./password.txt)
+
 # Run container
 # TODO: add this  -u $(id -u):$(id -g)
 # --privileged is needed so we can edit the read only bit of the file system to disable tensorflow crying about numa nodes
-docker run --privileged --gpus all -p 8888:8888 -it --rm $mounts --name jupyter-nb custom-jupyter-notebook
+docker run --privileged --gpus all -e PASS="$pass" -p 8888:8888 -it --rm $mounts --name jupyter-nb custom-jupyter-notebook
