@@ -33,15 +33,15 @@ rm -f -d -r ./temp
 
 
 echo "Building bin files"
-# Clean current bin directory
-rm -f -d -r ./bin
-mkdir ./bin
+# Create bin directory if not exist
+mkdir -p ./bin
 
 # Copy the bash files
 cp ./bin-src/jupyter-nb ./bin/jupyter-nb
 cp ./bin-src/jupyter-nb-sh ./bin/jupyter-nb-sh
-cp ./bin-src/mounts.txt ./bin/mounts.txt
-cp ./bin-src/password.txt ./bin/password.txt
+# Copy config files if not already exist
+cp -n ./bin-src/mounts.txt ./bin/mounts.txt
+cp -n ./bin-src/password.txt ./bin/password.txt
 
 # Remove gpu flag if not using gpu
 if [ $USE_GPU = false ]; then
