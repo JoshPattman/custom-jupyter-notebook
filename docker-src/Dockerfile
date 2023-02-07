@@ -7,6 +7,8 @@ RUN apt-get install nano
 RUN sed -i 's/echo -e "\\e\[m"/#echo -e "\\e\[m"/g' /etc/bash.bashrc
 RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' $HOME/.bashrc
 
+RUN python -m pip install --upgrade pip
+
 RUN python -m pip install scipy
 RUN python -m pip install sklearn
 RUN python -m pip install pandas
