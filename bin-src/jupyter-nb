@@ -1,4 +1,7 @@
 #!/bin/bash
+# Make relative paths work
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+cd $scriptDir
 
 # Read mounts
 # ChatGPT magic code
