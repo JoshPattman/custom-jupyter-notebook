@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Read mounts
+# ChatGPT magic code
+# read the file containing file paths
+file_paths=$(cat ./mounts.txt)
+
+# initialize an empty array to store the modified file paths
+file_path_array=()
+
+# loop through each file path and modify it as desired
+for file_path in $file_paths; do
+  # extract the last segment of the path
+  last_segment=${file_path##*/}
+  # add the modified file path to the array
+  file_path_array+=( "-v $file_path:/tf/$last_segment" )
+done
+
+# join the array elements with a newline character and assign to a variable
+mounts=$(printf "%s " "${file_path_array[@]}")
+
+# Run container
+# TODO: add this  -u $(id -u):$(id -g)
+# --privileged is needed so we can edit the read only bit of the file system to disable tensorflow crying about numa nodes
+docker run --privileged --gpus all -p 8888:8888 -it --rm $mounts --name jupyter-nb custom-jupyter-notebook
