@@ -30,6 +30,7 @@ RUN python -m pip install sklearn_crfsuite
 RUN python -m pip install eli5
 RUN python -m pip install pandas
 RUN python -m pip install flask
+RUN python -m pip install nltk
 
 #RUN python -m pip install gym
 #RUN python -m pip install gym[box2d]
